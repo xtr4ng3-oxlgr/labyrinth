@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Native C build output
+native/*.o
+native/*.exe
+native/checksum_demo
+
+# Editors
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Windows build output
+/build_windows/dist/
+/build_windows/build/
+
+# Generated lab instances at runtime
+/labs/
