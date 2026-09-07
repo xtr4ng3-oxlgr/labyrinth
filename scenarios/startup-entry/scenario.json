@@ -1,0 +1,33 @@
+{
+  "id": "startup-entry",
+  "name": "Startup Entry Review",
+  "difficulty": "intermediate",
+  "category": "startup",
+  "objective": "Review synthetic startup artifacts and determine which entry needs manual verification.",
+  "brief": "A system has several startup entries. Most are ordinary, but one has an unusual path and command style.",
+  "success_criteria": [
+    "Identify normal startup entries.",
+    "Identify the entry with unusual path/command.",
+    "Recommend manual verification."
+  ],
+  "artifacts": [
+    {
+      "path": "startup/run_keys.txt",
+      "content": "OneDrive=C:\\\\Program Files\\\\Microsoft OneDrive\\\\OneDrive.exe /background\\nAudioControl=C:\\\\Program Files\\\\Realtek\\\\Audio\\\\RtkNGUI64.exe\\nWinUpdateHelper=C:\\\\Users\\\\Public\\\\Documents\\\\update_helper.cmd\\n"
+    },
+    {
+      "path": "startup/update_helper.cmd.txt",
+      "content": "@echo off\\nREM Synthetic artifact only\\npowershell -ExecutionPolicy Bypass -File C:\\\\Users\\\\Public\\\\Documents\\\\stage.ps1\\n"
+    },
+    {
+      "path": "notes/review.md",
+      "content": "Review paths, publishers and command style. The unusual entry is not automatically malicious, but it requires validation.\\n"
+    }
+  ],
+  "hints": [
+    "Normal entries usually live under Program Files and have recognizable publishers.",
+    "Public writable locations are more suspicious for startup commands.",
+    "A command file launching PowerShell should be reviewed carefully."
+  ],
+  "solution": "WinUpdateHelper requires manual verification because it launches from a public documents path and chains into PowerShell. The other sample entries appear consistent with common vendor startup patterns."
+}

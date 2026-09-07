@@ -1,0 +1,37 @@
+{
+  "id": "incident-timeline",
+  "name": "Incident Timeline",
+  "difficulty": "advanced",
+  "category": "timeline",
+  "objective": "Reconstruct a local incident sequence from synthetic logs.",
+  "brief": "Several logs describe a support case. The task is to order events and identify the earliest meaningful change.",
+  "success_criteria": [
+    "Order events by timestamp.",
+    "Identify the first suspicious change.",
+    "Explain the likely sequence."
+  ],
+  "artifacts": [
+    {
+      "path": "logs/system.log",
+      "content": "20:14:02 system boot completed\\n20:21:17 new startup entry created: UpdaterTask\\n20:22:41 unexpected app crash: viewer.exe\\n20:23:12 user reports browser redirects\\n"
+    },
+    {
+      "path": "logs/download.log",
+      "content": "20:19:44 downloaded Invoice_Viewer_Update.pdf.exe from mirror-downloads.example.invalid\\n20:20:01 opened archive helper_package.zip\\n"
+    },
+    {
+      "path": "logs/network.log",
+      "content": "20:22:10 new outbound connection to 203.0.113.55:443\\n20:22:12 DNS query for update-check.example.invalid\\n"
+    },
+    {
+      "path": "notes/operator_notes.md",
+      "content": "# Operator notes\\n\\nFind the first meaningful change before symptoms started.\\n"
+    }
+  ],
+  "hints": [
+    "Symptoms are not always the first event.",
+    "Build a timeline before judging any single artifact.",
+    "The startup entry appears after the download and before the user-visible symptoms."
+  ],
+  "solution": "The earliest meaningful change is the download at 20:19:44, followed by archive activity, startup entry creation, outbound network activity, application crash and browser redirect symptoms."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "leaked-env",
+  "name": "Leaked Environment",
+  "difficulty": "beginner",
+  "category": "privacy",
+  "objective": "Find sensitive values inside a project folder before it is shared.",
+  "brief": "A developer is preparing a support ZIP and accidentally included environment files and logs with synthetic secrets.",
+  "success_criteria": [
+    "Locate the environment file.",
+    "Identify synthetic API and database secrets.",
+    "Recommend redaction before sharing."
+  ],
+  "artifacts": [
+    {
+      "path": "project/.env",
+      "content": "APP_ENV=production\\nAPI_KEY={{FAKE_TOKEN}}\\nDB_PASSWORD=FAKE_password_123\\nDATABASE_URL=postgres://demo:FAKE_password_123@localhost:5432/app\\n"
+    },
+    {
+      "path": "project/logs/app.log",
+      "content": "{{CREATED_AT}} INFO user demo@example.invalid logged in\\n{{CREATED_AT}} DEBUG token={{FAKE_TOKEN}}\\n"
+    },
+    {
+      "path": "project/README.md",
+      "content": "# Support Package\\n\\nThis folder is intended to be sent to support. Review before sharing.\\n"
+    }
+  ],
+  "hints": [
+    "Look for hidden or dot-prefixed files.",
+    "Logs often repeat values that were already present in configuration files.",
+    "The safe action is redaction, not deletion of the entire package."
+  ],
+  "solution": "The support package includes a .env file and logs containing synthetic credentials. These values must be redacted or replaced with placeholders before the folder is shared."
+}

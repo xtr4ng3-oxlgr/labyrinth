@@ -1,0 +1,33 @@
+{
+  "id": "support-redaction",
+  "name": "Support Redaction",
+  "difficulty": "beginner",
+  "category": "data-handling",
+  "objective": "Prepare a support bundle by identifying values that must be masked.",
+  "brief": "A user wants to send logs and configs to support. The bundle includes emails, local paths and synthetic tokens.",
+  "success_criteria": [
+    "Identify personal or sensitive values.",
+    "Suggest safe replacements.",
+    "Keep useful diagnostic context."
+  ],
+  "artifacts": [
+    {
+      "path": "support_bundle/config.ini",
+      "content": "[auth]\\nuser_email=demo.user@example.invalid\\napi_token={{FAKE_TOKEN}}\\nworkspace=C:\\\\Users\\\\Matias\\\\Desktop\\\\Project\\n"
+    },
+    {
+      "path": "support_bundle/error.log",
+      "content": "{{CREATED_AT}} ERROR failed to connect user=demo.user@example.invalid token={{FAKE_TOKEN}} path=C:\\\\Users\\\\Matias\\\\AppData\\\\Local\\\\Tool\\\\config.json\\n"
+    },
+    {
+      "path": "support_bundle/message.txt",
+      "content": "I need help, but I should not expose my email, token or local username.\\n"
+    }
+  ],
+  "hints": [
+    "Do not remove all context; mask only sensitive values.",
+    "Emails, tokens and local usernames are enough to redact.",
+    "Useful replacement examples: <REDACTED_EMAIL>, <REDACTED_TOKEN>, C:\\\\Users\\\\<USER>."
+  ],
+  "solution": "The bundle should keep error structure and file context while masking email, token and local username. The recommended action is controlled redaction before sharing."
+}
