@@ -1,5 +1,5 @@
 # LABYRINTH
-
+![Build](https://github.com/xtr4ng3-oxlgr/labyrinth/actions/workflows/build.yml/badge.svg)
 <img width="1672" height="941" alt="labyrinth" src="https://github.com/user-attachments/assets/783856e5-a770-46d1-9fc7-cf7056ccb8da" />
 
 **LABYRINTH** es un generador local de laboratorios defensivos orientado a formación técnica, revisión de incidentes, análisis de logs, manejo seguro de datos sensibles y preparación de proyectos antes de publicarlos.
