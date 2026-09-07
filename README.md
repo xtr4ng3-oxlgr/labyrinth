@@ -1,7 +1,6 @@
 # LABYRINTH
 
-<img width="1672" height="941" alt="laby" src="https://github.com/user-attachments/assets/cc76b1c9-9097-4be3-9202-4c0d4b94784c" />
-
+<img width="1672" height="941" alt="labyrinth" src="https://github.com/user-attachments/assets/783856e5-a770-46d1-9fc7-cf7056ccb8da" />
 
 **LABYRINTH** es un generador local de laboratorios defensivos orientado a formación técnica, revisión de incidentes, análisis de logs, manejo seguro de datos sensibles y preparación de proyectos antes de publicarlos.
 
@@ -291,7 +290,7 @@ No debe utilizarse con datos privados reales.
 
 # Licencia
 
-<img width="300" height="159" alt="giphy (25)" src="https://github.com/user-attachments/assets/021720ff-3aec-4916-9a93-25d47afd7d97" />
+<img width="300" height="159" alt="xtr4ng3" src="https://github.com/user-attachments/assets/58e55498-1173-4447-9429-ffc2c6913a92" />
 
 **xtr4ng3**
 
