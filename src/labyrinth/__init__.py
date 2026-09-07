@@ -1,0 +1,5 @@
+APP_NAME = "LABYRINTH"
+APP_VERSION = "1.0.0"
+AUTHOR = "xtr4ng3"
+TAGLINE = "Local Defensive Training Lab"
+INTERNAL_MARK = "xtr4ng3-oxlgr"
